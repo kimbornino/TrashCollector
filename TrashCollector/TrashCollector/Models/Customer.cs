@@ -15,9 +15,11 @@ namespace TrashCollector.Models
 
         public string Address { get; set; }
 
-        public double Zip { get; set; }
+        public double CustomerZip { get; set; }
 
-        public DateTime PickupDate {get; set; }
+        public DateTime PickupStartDate {get; set; }
+
+        public DateTime pickupEndDate { get; set; }
 
         public string Username { get; set; }
 

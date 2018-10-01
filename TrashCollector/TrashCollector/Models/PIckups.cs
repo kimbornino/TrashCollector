@@ -15,6 +15,5 @@ namespace TrashCollector.Models
 
         public int EmployeeID { get; set; }
 
-
     }
 }

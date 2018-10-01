@@ -9,7 +9,7 @@ namespace TrashCollector.Models
     public class Customer
     {
         [Key]
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
 
         public string Name { get; set; }
 
@@ -17,9 +17,10 @@ namespace TrashCollector.Models
 
         public double CustomerZip { get; set; }
 
-        public DateTime PickupStartDate {get; set; }
+        public string DayOfWeek {get; set; }
+        public DateTime PickupStartDate { get; set; }
 
-        public DateTime pickupEndDate { get; set; }
+        public DateTime PickupEndDate { get; set; }
 
         public string Username { get; set; }
 

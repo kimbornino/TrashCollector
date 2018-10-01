@@ -218,7 +218,6 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PIckups.cs" />
     <Compile Include="Models\TestAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

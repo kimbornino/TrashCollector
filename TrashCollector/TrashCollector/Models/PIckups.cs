@@ -12,17 +12,17 @@ namespace TrashCollector.Models
 
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }
-        public int Customer { get; set; }
+        public Customer Customer { get; set; }
 
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
-        public int Employee { get; set; }
+        public Employee Employee { get; set; }
 
         public bool ConfirmPickup { get; set; }
 
         [ForeignKey("PickupDay")]
         public string DayofWeek { get; set; }
-        public string Day { get; set; }
+        public string  Day { get; set; }
 
         public string  CustomPickup { get; set; }
 

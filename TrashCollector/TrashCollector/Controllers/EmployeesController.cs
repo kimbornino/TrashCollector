@@ -17,7 +17,7 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            var employees = db.Employees.Include(e => e.ApplicationUser).Include(e => e.Customer);
+            var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(employees.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace TrashCollector.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "UserRole");
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole");
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
             return View();
         }
@@ -49,7 +49,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeID,Name,EmployeeZip,ApplicationUserId,CustomerId")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeID,Name,EmployeeZip,ApplicationUserId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +58,8 @@ namespace TrashCollector.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "UserRole", employee.ApplicationUserId);
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", employee.ApplicationUserId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
             return View(employee);
         }
 
@@ -75,8 +75,8 @@ namespace TrashCollector.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "UserRole", employee.ApplicationUserId);
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", employee.ApplicationUserId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
             return View(employee);
         }
 
@@ -93,8 +93,8 @@ namespace TrashCollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "UserRole", employee.ApplicationUserId);
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", employee.ApplicationUserId);
+            //ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
             return View(employee);
         }
 

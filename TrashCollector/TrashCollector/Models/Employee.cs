@@ -8,9 +8,7 @@ namespace TrashCollector.Models
 {
     public class Employee
     {
-        [Test]
-
-
+        
         public int EmployeeID { get; set; }
 
         public string Name { get; set; }
@@ -22,9 +20,6 @@ namespace TrashCollector.Models
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
-        public Customer Customer{ get; set; }
 
         public IEnumerable<Customer> Customers { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -18,14 +19,16 @@ namespace TrashCollector.Models
         public double CustomerZip { get; set; }
 
         public string DayOfWeek {get; set; }
+
         public DateTime PickupStartDate { get; set; }
 
         public DateTime PickupEndDate { get; set; }
 
-        public string Username { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
-        public string Password { get; set; }
-
+        public double BillAmount { get; set; }
 
     }
 }

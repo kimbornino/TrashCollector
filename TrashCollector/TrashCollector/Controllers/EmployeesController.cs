@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,6 +18,8 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
+            // string currentUserId = User.Identity.GetUserId();
+
             var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(employees.ToList());
         }
@@ -53,6 +56,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
+                employee.ApplicationUserId = "23456";
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");

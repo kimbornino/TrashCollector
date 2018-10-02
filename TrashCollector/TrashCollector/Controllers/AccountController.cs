@@ -80,6 +80,11 @@ namespace TrashCollector.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    // User.IsInRole("Customer")
+                    if(true)
+                    {
+
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

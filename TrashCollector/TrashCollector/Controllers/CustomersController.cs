@@ -17,6 +17,7 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
+            // ApplicationUser
             var customers = db.Customers.Include(c => c.ApplicationUser);
             return View(customers.ToList());
         }

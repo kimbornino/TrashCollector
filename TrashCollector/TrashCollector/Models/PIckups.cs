@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace TrashCollector.Models
 {
     public class Pickups
     {
+        [Key]
         public int PickupID { get; set; }
 
         [ForeignKey("Customer")]
@@ -20,9 +22,9 @@ namespace TrashCollector.Models
 
         public bool ConfirmPickup { get; set; }
 
-        [ForeignKey("PickupDay")]
-        public string DayofWeek { get; set; }
-        public string  Day { get; set; }
+        //[ForeignKey("PickupDay")]
+        //public Customer DayofWeek { get; set; }
+        public string PickupDay { get; set; }
 
         public string  CustomPickup { get; set; }
 

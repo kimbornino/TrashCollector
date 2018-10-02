@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201810021609436_displayNames.Designer.cs">
       <DependentUpon>201810021609436_displayNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810021958009_pickups.cs" />
+    <Compile Include="Migrations\201810021958009_pickups.Designer.cs">
+      <DependentUpon>201810021958009_pickups.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -343,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810021609436_displayNames.resx">
       <DependentUpon>201810021609436_displayNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810021958009_pickups.resx">
+      <DependentUpon>201810021958009_pickups.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

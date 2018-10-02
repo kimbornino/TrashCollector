@@ -80,12 +80,20 @@ namespace TrashCollector.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    // User.IsInRole("Customer")
-                    if(true)
+                    if(User.IsInRole("Customer"))
                     {
-
+                        //probably should redirect only that specific user, put it may happen autimatically
+                        return RedirectToAction("details", "Customers");
                     }
-                    return RedirectToLocal(returnUrl);
+                    if (User.IsInRole("Employee"))
+                    {
+                        return RedirectToAction("index", "Customers");
+                    }
+                    else
+
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

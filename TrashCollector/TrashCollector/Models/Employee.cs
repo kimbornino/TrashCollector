@@ -10,7 +10,7 @@ namespace TrashCollector.Models
     {
         [Test]
 
-        
+
         public int EmployeeID { get; set; }
 
         public string Name { get; set; }
@@ -24,7 +24,8 @@ namespace TrashCollector.Models
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
-        public int Customer { get; set; }
+        public Customer Customer{ get; set; }
 
+        public IEnumerable<Customer> Customers { get; set; }
     }
 }

@@ -35,7 +35,10 @@
         <th>
             @Html.DisplayNameFor(model => model.BillAmount)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomPickUp)
+
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -63,6 +66,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BillAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomPickUp)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |

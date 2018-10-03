@@ -23,7 +23,14 @@ namespace TrashCollector.Controllers
 
             var employee = db.Employees.Where(e => e.ApplicationUserId == currentUserId).FirstOrDefault();
 
-            var CustomerList = db.Customers.Include(c => c.CustomerZip == employee.EmployeeZip);
+            var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip).ToList();
+
+            //var CustomerList = "";
+            
+            //    foreach (var customer in CustomerAtZip)
+            //{
+            //    CustomerList += customer;
+            //}
 
             //var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(CustomerList);

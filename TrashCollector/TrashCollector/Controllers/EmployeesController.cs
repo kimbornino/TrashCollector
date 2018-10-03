@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,7 +19,6 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            
             var currentUserId = User.Identity.GetUserId();
 
             var employee = db.Employees.Where(e => e.ApplicationUserId == currentUserId).FirstOrDefault();

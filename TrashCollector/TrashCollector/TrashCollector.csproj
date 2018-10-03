@@ -202,33 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810011749014_InitialCreate.cs" />
-    <Compile Include="Migrations\201810011749014_InitialCreate.Designer.cs">
-      <DependentUpon>201810011749014_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810011819405_update-database.cs" />
-    <Compile Include="Migrations\201810011819405_update-database.Designer.cs">
-      <DependentUpon>201810011819405_update-database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810011906096_[201810011819405_update-database].cs" />
-    <Compile Include="Migrations\201810011906096_[201810011819405_update-database].Designer.cs">
-      <DependentUpon>201810011906096_[201810011819405_update-database].cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810021245009_models.cs" />
-    <Compile Include="Migrations\201810021245009_models.Designer.cs">
-      <DependentUpon>201810021245009_models.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810021338451_updatedUser.cs" />
-    <Compile Include="Migrations\201810021338451_updatedUser.Designer.cs">
-      <DependentUpon>201810021338451_updatedUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810021609436_displayNames.cs" />
-    <Compile Include="Migrations\201810021609436_displayNames.Designer.cs">
-      <DependentUpon>201810021609436_displayNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810021958009_pickups.cs" />
-    <Compile Include="Migrations\201810021958009_pickups.Designer.cs">
-      <DependentUpon>201810021958009_pickups.cs</DependentUpon>
+    <Compile Include="Migrations\201810031819142_initial.cs" />
+    <Compile Include="Migrations\201810031819142_initial.Designer.cs">
+      <DependentUpon>201810031819142_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -330,26 +306,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810011749014_InitialCreate.resx">
-      <DependentUpon>201810011749014_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810011819405_update-database.resx">
-      <DependentUpon>201810011819405_update-database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810011906096_[201810011819405_update-database].resx">
-      <DependentUpon>201810011906096_[201810011819405_update-database].cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810021245009_models.resx">
-      <DependentUpon>201810021245009_models.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810021338451_updatedUser.resx">
-      <DependentUpon>201810021338451_updatedUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810021609436_displayNames.resx">
-      <DependentUpon>201810021609436_displayNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810021958009_pickups.resx">
-      <DependentUpon>201810021958009_pickups.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810031819142_initial.resx">
+      <DependentUpon>201810031819142_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

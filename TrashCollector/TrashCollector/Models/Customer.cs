@@ -21,16 +21,24 @@ namespace TrashCollector.Models
         [Display(Name = "Day for Pickup (Monday-Friday)")]
         public string DayOfWeek {get; set; }
 
+        [Display(Name = "Start Pickups (mm/dd/yy)")]
         public DateTime PickupStartDate { get; set; }
 
+        [Display(Name = "End/Suspend Pickups (mm/dd/yy)")]
         public DateTime PickupEndDate { get; set; }
+
+        [Display(Name= "Create One Time Pickup: Enter day this week")]
+        public string CustomPickUp { get; set; }
+
+        [Display(Name = "Was trash collected?")]
+        public bool PickupCompleted { get; set; }
 
         [Display(Name = "Select 'Customer' or 'Employee'")]
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        [Display(Name = "Your Bill")]
+        [Display(Name = "Customer Bill")]
         public double BillAmount { get; set; }
 
     }

@@ -76,20 +76,12 @@ namespace TrashCollector.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
-            Employee employee = null;
-            if (id == null)
+           
+ if (id == null)
             {
-                var foundUserId = User.Identity.GetUserId();
-
-                employee = db.Employees.Where(e => e.ApplicationUserId == foundUserId).FirstOrDefault();
-                return View(employee);
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
-            {
-                employee = db.Employees.Find(id);
-            }
-            
+            Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();

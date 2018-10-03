@@ -33,16 +33,31 @@ namespace TrashCollector.Controllers
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Customer customer = null;
+                if (id == null)
+                {
+                    // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                    var FoundUserId = User.Identity.GetUserId();
+
+                    customer = db.Customers.Where(c => c.ApplicationUserId == FoundUserId).FirstOrDefault();
+                    return View();
+
+                }
+
+                else
+                {
+                    customer = db.Customers.Find(id);
+                }
+
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(customer);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
         }
 
         // GET: Employees/Create
@@ -77,7 +92,7 @@ namespace TrashCollector.Controllers
         public ActionResult Edit(int? id)
         {
            
- if (id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

@@ -18,7 +18,7 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            // string currentUserId = User.Identity.GetUserId();
+             string currentUserId = User.Identity.GetUserId();
 
             var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(employees.ToList());
@@ -43,7 +43,7 @@ namespace TrashCollector.Controllers
         public ActionResult Create()
         {
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole");
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
+            //ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                employee.ApplicationUserId = "23456";
+                employee.ApplicationUserId = User.Identity.GetUserId(); 
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");

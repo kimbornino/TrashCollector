@@ -25,11 +25,19 @@ namespace TrashCollector.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
+            Customer customer = null;
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                // find the id of current user
+                // query customers for corresponding customer based on that id
             }
-            Customer customer = db.Customers.Find(id);
+            else
+            {
+                customer = db.Customers.Find(id);
+            }
+
             if (customer == null)
             {
                 return HttpNotFound();
@@ -53,6 +61,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
+                customer.ApplicationUserId = "test";
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -30,9 +31,13 @@ namespace TrashCollector.Controllers
             {
                 // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-                // find the id of current user
-                // query customers for corresponding customer based on that id
+                var FoundUserId = User.Identity.GetUserId();
+                
+                customer = db.Customers.Where(c => c.ApplicationUserId == FoundUserId).FirstOrDefault();
+                return View(customer);
+                
             }
+
             else
             {
                 customer = db.Customers.Find(id);
@@ -61,7 +66,8 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                customer.ApplicationUserId = "test";
+                //code edited here.  it was equal to test
+                customer.ApplicationUserId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

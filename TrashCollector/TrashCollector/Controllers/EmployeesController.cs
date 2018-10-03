@@ -25,13 +25,7 @@ namespace TrashCollector.Controllers
 
             var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip).ToList();
 
-            //var CustomerList = "";
-            
-            //    foreach (var customer in CustomerAtZip)
-            //{
-            //    CustomerList += customer;
-            //}
-
+           
             //var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(CustomerList);
         }
@@ -82,11 +76,20 @@ namespace TrashCollector.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
+            Employee employee = null;
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var foundUserId = User.Identity.GetUserId();
+
+                employee = db.Employees.Where(e => e.ApplicationUserId == foundUserId).FirstOrDefault();
+                return View(employee);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            else
+            {
+                employee = db.Employees.Find(id);
+            }
+            
             if (employee == null)
             {
                 return HttpNotFound();

@@ -16,14 +16,20 @@ namespace TrashCollector.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Employees
-        public ActionResult Index()
+       
+    // GET: Employees
+
+    public ActionResult Index()
         {
+            var day = DateTime.Today.DayOfWeek;
+            string stringDay = day.ToString();
+            
+
             var currentUserId = User.Identity.GetUserId();
 
             var employee = db.Employees.Where(e => e.ApplicationUserId == currentUserId).FirstOrDefault();
 
-            var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip && z.DayOfWeek == "Monday").ToList();
+            var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip && z.DayOfWeek == stringDay).ToList();
 
            
             //var employees = db.Employees.Include(e => e.ApplicationUser);

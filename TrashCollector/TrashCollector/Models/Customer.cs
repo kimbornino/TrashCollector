@@ -22,10 +22,10 @@ namespace TrashCollector.Models
         public string DayOfWeek {get; set; }
 
         [Display(Name = "Start Pickups (mm/dd/yy)")]
-        public DateTime PickupStartDate { get; set; }
+        public string PickupStartDate { get; set; }
 
         [Display(Name = "End/Suspend Pickups (mm/dd/yy)")]
-        public DateTime PickupEndDate { get; set; }
+        public string PickupEndDate { get; set; }
 
         [Display(Name= "Create One Time Pickup: Enter day this week")]
         public string CustomPickUp { get; set; }

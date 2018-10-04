@@ -1,81 +1,82 @@
-﻿@model IEnumerable<TrashCollector.Models.Customer>
+﻿@model TrashCollector.Models.Customer
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
 }
 
-<h2>Index</h2>
+<h2>Details</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
             @Html.DisplayNameFor(model => model.ApplicationUser.UserRole)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.UserRole)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CustomerZip)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerZip)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.DayOfWeek)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOfWeek)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PickupStartDate)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupStartDate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PickupEndDate)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupEndDate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.BillAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomPickUp)
+        </dt>
 
-        </th>
-    </tr>
+        <dd>
+            @Html.DisplayFor(model => model.BillAmount)
+        </dd>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.UserRole)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerZip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayOfWeek)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickupStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickupEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BillAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomPickUp)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
-        </td>
-    </tr>
-}
-
-</table>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

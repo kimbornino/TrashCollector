@@ -18,9 +18,12 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
+  
+            var FoundUserId = User.Identity.GetUserId();
+            var customer = db.Customers.Where(c => c.ApplicationUserId == FoundUserId).FirstOrDefault();
             // ApplicationUser
             var customers = db.Customers.Include(c => c.ApplicationUser);
-            return View(customers.ToList());
+            return View(customer);
         }
 
         // GET: Customers/Details/5

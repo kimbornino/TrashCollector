@@ -62,8 +62,14 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,Name,Address,CustomerZip,DayOfWeek,PickupStartDate,PickupEndDate,ApplicationUserId,BillAmount,CustomPickUp, PickupCompleted")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerId,Name,Address,CustomerZip,DayOfWeek,PickupStartDate,PickupEndDate,CustomPickUp,PickupCompleted,ApplicationUserId,ApplicationUser")] Customer customer)
         {
+            
+            var errors = ModelState
+            .Where(x => x.Value.Errors.Count > 0)
+            .Select(x => new { x.Key, x.Value.Errors })
+            .ToArray();
+
             if (ModelState.IsValid)
             {
                 //code edited here.  it was equal to test
@@ -98,7 +104,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,Name,Address,CustomerZip,DayOfWeek,PickupStartDay, PikckupEndDate, ApplicationUserId,BillAmount, CustomPickUp, PickupCompleted")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerId,Name,Address,CustomerZip,DayOfWeek,PickupStartDate,PickupEndDate, ApplicationUserId,BillAmount, CustomPickUp, PickupCompleted")] Customer customer)
 
         {
             if (ModelState.IsValid)

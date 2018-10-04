@@ -23,7 +23,7 @@ namespace TrashCollector.Controllers
 
             var employee = db.Employees.Where(e => e.ApplicationUserId == currentUserId).FirstOrDefault();
 
-            var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip).ToList();
+            var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip && z.DayOfWeek == "Monday").ToList();
 
            
             //var employees = db.Employees.Include(e => e.ApplicationUser);

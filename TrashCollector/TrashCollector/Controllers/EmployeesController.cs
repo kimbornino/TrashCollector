@@ -91,19 +91,20 @@ namespace TrashCollector.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
-           
-            if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Customer customer = db.Customers.Find(id);
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", customer.ApplicationUserId);
+                return View(customer);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", employee.ApplicationUserId);
-            //ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
-            return View(employee);
+
         }
 
         // POST: Employees/Edit/5
@@ -111,18 +112,18 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeID,Name,EmployeeZip,ApplicationUserId,CustomerId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "BillAmount, CustomPickUp")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", employee.ApplicationUserId);
-            //ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", employee.CustomerId);
-            return View(employee);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", customer.ApplicationUserId);
+            return View(customer);
         }
+    
 
         // GET: Employees/Delete/5
         public ActionResult Delete(int? id)

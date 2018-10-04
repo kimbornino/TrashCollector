@@ -24,15 +24,13 @@
                     @if (User.IsInRole("Customer"))
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Edit Pickups","Edit", "Customers") </li>
-                        <li>@Html.ActionLink("View Information","Details","Customers") </li>
+                        <li>@Html.ActionLink("Edit/Set Pickups","Details","Customers") </li>
                         }
                         @if (User.IsInRole("Employee"))
                         {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li> @Html.ActionLink("View Pickups", "Index", "Employees")</li>
-                        <li>@Html.ActionLink("Edit Pickups", "Edit", "Pickups")</li>
-                        <li>@Html.ActionLink("Charge Customer", "Edit", "Customers")</li>
+                       
                     }
                     </ul>
                 @Html.Partial("_LoginPartial")

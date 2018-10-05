@@ -156,6 +156,10 @@ namespace TrashCollector.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Map()
+        {
+            return View();
+        }
 
         protected override void Dispose(bool disposing)
         {

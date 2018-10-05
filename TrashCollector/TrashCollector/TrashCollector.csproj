@@ -202,6 +202,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MapAPIKey.cs" />
     <Compile Include="Migrations\201810031819142_initial.cs" />
     <Compile Include="Migrations\201810031819142_initial.Designer.cs">
       <DependentUpon>201810031819142_initial.cs</DependentUpon>
@@ -218,6 +219,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PIckups.cs" />
     <Compile Include="Models\TestAttribute.cs" />
+    <Compile Include="Operations\TrashCollectorMaps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -291,6 +293,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

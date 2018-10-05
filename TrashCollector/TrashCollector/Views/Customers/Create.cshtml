@@ -5,11 +5,20 @@
 }
 
 <h2>Create</h2>
+@{ List<SelectListItem> daysList = new List<SelectListItem>();
+    daysList.Add(new SelectListItem { Text = "Monday", Value = "0", Selected = true });
+    daysList.Add(new SelectListItem { Text = "Tuesday", Value = "1" });
+    daysList.Add(new SelectListItem { Text = "Wednesday", Value = "2"});
+    daysList.Add(new SelectListItem { Text = "Thursday", Value = "3" });
+    daysList.Add(new SelectListItem { Text = "Friday", Value = "4"});
 
+        }
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+
+
     
 <div class="form-horizontal">
     <h4>Customer</h4>
@@ -42,9 +51,12 @@
     <div class="form-group">
         @Html.LabelFor(model => model.DayOfWeek, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DayOfWeek, new { htmlAttributes = new { @class = "form-control" } })
+            @*//@Html.EditorFor(model => model.DayOfWeek, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.DropDownList("Days", daysList, "Select Day")
             @Html.ValidationMessageFor(model => model.DayOfWeek, "", new { @class = "text-danger" })
-            
+
+            @*@Html.DropDownList("Days", daysList, "Select Day")*@
+
         </div>
     </div>
 
@@ -67,7 +79,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.CustomPickUp, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.CustomPickUp, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownList("Days", daysList, "Select Day")
             @Html.ValidationMessageFor(model => model.CustomPickUp, "", new { @class = "text-danger" })
         </div>
     </div>

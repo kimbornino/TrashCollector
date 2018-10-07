@@ -55,12 +55,12 @@ namespace TrashCollector.Operations
         public class Geocoder
         {
          
-            public static string[] RunGeocoder(string address, string city, string state)
+            public static string[] RunGeocoder(string address, string zip)
             {
                 address = address.Trim().Replace(" ", "+");
-                city = city.Trim().Replace(" ", "+");
-                state = state.Trim();
-                string url = $"https://maps.googleapis.com/maps/api/geocode/json?address={address},+{city},+{state}&key={MapAPIKey.key}";
+                //city = city.Trim().Replace(" ", "+");
+                //state = state.Trim();
+                string url = $"https://maps.googleapis.com/maps/api/geocode/json?address={address},{zip}&key={MapAPIKey.key}";
                 WebResponse response = null;
                 try
                 {

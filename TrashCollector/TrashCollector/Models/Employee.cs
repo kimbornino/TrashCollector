@@ -13,7 +13,7 @@ namespace TrashCollector.Models
 
         public string Name { get; set; }
 
-        public double EmployeeZip { get; set; }
+        public string EmployeeZip { get; set; }
 
         //check this
         [ForeignKey("ApplicationUser")]

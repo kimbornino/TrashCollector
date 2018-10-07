@@ -16,7 +16,7 @@ namespace TrashCollector.Models
         public string Address { get; set; }
 
         [Display(Name = "Zip Code")]
-        public double CustomerZip { get; set; }
+        public string CustomerZip { get; set; }
 
         [Display(Name = "Day for Pickup (Monday-Friday)")]
         public string DayOfWeek {get; set; }

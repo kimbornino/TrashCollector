@@ -120,12 +120,19 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CustomerId, Name, Address, CustomerZip, DayOfWeek, PickupStartDate, PickupEndDate, ApplicationUserId, BillAmount, CustomPickUp, PickupCompleted")] Customer customer)
         {
+            if (customer.PickupCompleted == true)
+            {
+                customer.BillAmount = customer.BillAmount + 10;
+                db.SaveChanges();
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+           
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", customer.ApplicationUserId);
             return View(customer);
         }

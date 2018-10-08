@@ -21,6 +21,7 @@ namespace TrashCollector.Controllers
 
     public ActionResult Index()
         {
+            Customer cust = new Customer();
             var day = DateTime.Today.DayOfWeek;
             string stringDay = day.ToString();
             
@@ -31,7 +32,12 @@ namespace TrashCollector.Controllers
 
             var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip && (z.DayOfWeek == stringDay || z.CustomPickUp == stringDay)).ToList();
 
-           
+          
+            //DateTime start = DateTime.Parse(cust.PickupStartDate);
+            //DateTime end = DateTime.Parse(cust.PickupEndDate);
+
+                //finish writing logic to narrow pickups to jsut ones in this date range
+
             //var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(CustomerList);
         }

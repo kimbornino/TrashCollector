@@ -79,6 +79,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.CustomPickUp, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            @Html.EditorFor(model => model.PickupEndDate, new { htmlAttributes = new { @class = "form-control" } })
+        
             @*@Html.DropDownList("Days", daysList, "Select Day")*@
             @Html.ValidationMessageFor(model => model.CustomPickUp, "", new { @class = "text-danger" })
         </div>

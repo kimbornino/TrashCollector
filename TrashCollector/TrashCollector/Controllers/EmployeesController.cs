@@ -21,23 +21,17 @@ namespace TrashCollector.Controllers
 
     public ActionResult Index()
         {
-            Customer cust = new Customer();
+            //Customer cust = new Customer();
             var day = DateTime.Today.DayOfWeek;
             string stringDay = day.ToString();
             
-
             var currentUserId = User.Identity.GetUserId();
 
             var employee = db.Employees.Where(e => e.ApplicationUserId == currentUserId).FirstOrDefault();
 
             var CustomerList = db.Customers.Where(z => z.CustomerZip == employee.EmployeeZip && (z.DayOfWeek == stringDay || z.CustomPickUp == stringDay)).ToList();
-
-          
-            //DateTime start = DateTime.Parse(cust.PickupStartDate);
-            //DateTime end = DateTime.Parse(cust.PickupEndDate);
-
-                //finish writing logic to narrow pickups to jsut ones in this date range
-
+            //new code
+           
             //var employees = db.Employees.Include(e => e.ApplicationUser);
             return View(CustomerList);
         }
@@ -114,7 +108,7 @@ namespace TrashCollector.Controllers
                     return HttpNotFound();
                 }
                 ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", customer.ApplicationUserId);
-                return View(customer);
+                return View();
             }
 
         }
@@ -169,10 +163,41 @@ namespace TrashCollector.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Map()
+      
+
+
+        public ActionResult Map(int? id)
         {
-            return View();
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Customer customer = db.Customers.Find(id);
+                if (customer == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", customer.ApplicationUserId);
+                ViewBag.CustomerAddress = customer.Address;
+                ViewBag.CustomerZip = customer.CustomerZip;
+                return View(customer);
+            }
+
         }
+        //[HttpPost]
+        //public ActionResult Map([Bind(Include = "CustomerId, Name, Address, CustomerZip, DayOfWeek, PickupStartDate, PickupEndDate, ApplicationUserId, BillAmount, CustomPickUp, PickupCompleted")] Customer customer)
+        //{
+          
+        //    if (ModelState.IsValid)
+        //    {
+          
+        //        return RedirectToAction("Map");
+        //    }
+
+        //    ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "UserRole", customer.ApplicationUserId);
+        //    return View(customer);
+        //}
 
         protected override void Dispose(bool disposing)
         {

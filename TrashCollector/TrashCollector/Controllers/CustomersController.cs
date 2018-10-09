@@ -8,17 +8,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
+using TrashCollector.Operations;
 
 namespace TrashCollector.Controllers
 {
     public class CustomersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        //new code
+        //private Geocoder geocoder = new Geocoder();
 
         // GET: Customers
         public ActionResult Index()
         {
-  
             var FoundUserId = User.Identity.GetUserId();
             var customer = db.Customers.Where(c => c.ApplicationUserId == FoundUserId).FirstOrDefault();
             // ApplicationUser
@@ -78,6 +80,8 @@ namespace TrashCollector.Controllers
                 //code edited here.  it was equal to test
                 customer.ApplicationUserId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
+                // SUSPICIOUS!!!!!!
+                //Geocoder.RunGeocoder(customer.Address, customer.CustomerZip);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
